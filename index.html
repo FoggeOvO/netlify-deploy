@@ -21,14 +21,15 @@
 
 <body>
     <p>Im here~</p>
-    <input id="ipt_name" value="dd"></input>
-    <button id="btn_c"></button>
+    <div>加班日期:</div>
+    <div id="div1"></div>
+    <button id="btn_c">审批</button>
 </body>
 
 <script>
     function setNameText() {
-        const myElement = document.getElementById("ipt_name");
-        myElement.value = getQueryVariable("requestId");
+        const myElement = document.getElementById("div1");
+        myElement.innerText = getQueryVariable("requestId");
     }
     setNameText();
 </script>
