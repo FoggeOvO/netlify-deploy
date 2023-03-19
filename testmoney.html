@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>測試金申請</title>
+    <!-- <script src="script/common.js"></script> -->
+    <!-- <script src="script/overtime.js"></script> -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="script/common.js"></script>
+    <link href="style/testmoney.css" rel="stylesheet" type="text/css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <meta name="viewport" content="width = device-width,initial-scale=1.0">
+
+</head>
+
+<body>
+    <div class="app">
+        <form>
+            <div class="field-wrapper">
+                1.基本信息
+            </div>
+            <div class="field-wrapper" form-model="[object object]">
+                <input type="text" id="requestid" name="requestid">
+            </div>
+            <div class="field-wrapper" form-model="[object object]">
+                <label>標題</label>
+                <input type="text" id="title" name="title" placeholder="標題">
+            </div>
+            <div class="field-wrapper" form-model="[object object]">
+                <label>流程編號</label>
+                <input type="text" id="processno" name="processno" placeholder="流程編號">
+            </div>
+            <div class="field-wrapper" form-model="[object object]">
+                <label>申請人</label>
+                <input type="text" id="applicant" name="applicant" placeholder="申請人">
+            </div>
+            <div class="field-wrapper" form-model="[object object]">
+                <label>工号</label>
+                <input type="text" id="workno" name="workno" placeholder="工号">
+            </div>
+            <div class="field-wrapper" form-model="[object object]">
+                <label>申請日期</label>
+                <input type="text" id="applydate" name="applydate" placeholder="申請日期">
+            </div>
+            <div class="field-wrapper" form-model="[object object]">
+                <label>事業群</label>
+                <input type="text" id="group" name="group" placeholder="事業群">
+            </div>
+            <div class="field-wrapper" form-model="[object object]">
+                <label>事業處</label>
+                <input type="text" id="divison" name="divison" placeholder="事業處">
+            </div>
+            <div class="field-wrapper" form-model="[object object]">
+                <label>事業部</label>
+                <input type="text" id="department" name="department" placeholder="事業部">
+            </div>
+            <div class="field-wrapper">
+                2.業務內容
+            </div>
+            <div class="field-wrapper" form-model="[object object]">
+                <label>試玩帳號</label>
+                <input type="text" id="testaccount" name="testaccount" placeholder="試玩帳號">
+            </div>
+            <div class="field-wrapper" form-model="[object object]">
+                <label>金額</label>
+                <input type="text" id="amount" name="amount" placeholder="金額">
+            </div>
+            <div class="field-wrapper" form-model="[object object]">
+                <label>備註</label>
+                <input type="text" id="note" name="note" placeholder="備註">
+            </div>
+
+        </form>
+
+
+        <div class="submit">
+            <button onclick="submit(0)">審批</button>
+            <button onclick="submit(1)">退回</button>
+        </div>
+
+        <div class="submittext">
+            <label>submittext</label>
+            <input type="text" id="submittext" name="submittext">
+        </div>
+
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var requestid = document.getElementById("requestid").value;
+                function submit(type) {
+                    const mainButton = window.Telegram.WebApp.MainButton;
+                    callback_text = "";
+                    // type = 0:審批 1:退回
+                    if (type == 0) {
+                        mainButton.text = "審批mainbutton";
+                        callback_text = "submit " + requestid;
+
+                    } else {
+                        mainButton.text = "退回mainbutton";
+                        callback_text = "reject " + requestid;
+                    }
+                    mainButton.enable();
+                    mainButton.show();
+                    document.getElementById("requestid").value = callback_text;
+                }
+
+                mainButton.onClick(() => {
+
+                });
+            });
+
+        </script>
+
+    </div>
+    <script src="script/testmoney.js"></script>
+
+</body>
+
+</html>
