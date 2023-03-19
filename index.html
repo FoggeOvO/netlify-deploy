@@ -1,37 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 
-    <title></title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>oaoaoa</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link href="style/style.css" rel="stylesheet" type="text/css">
+</head>
 
+<body>
+    <div class="container" id="container">
+        <template v-for="button in buttonlist">
+            <div id="buttons" class="buttons">
+                <div class="buttons-pic">
+                    <img :src="button.pic">
+                </div>
+                <div class="buttons-name">
+                    {{button.name}}
+                </div>
+                <div class="buttons-apply">
+                    <!-- <button onclick="buttons_click()">Apply</button> -->
+                    <button onclick="newtab()">Apply</button>
+                </div>
+            </div>
+        </template>
+
+    </div>
     <script>
-        function getQueryVariable(variable) {
-            var query = window.location.search.substring(1);
-            var vars = query.split("&");
-            for (var i = 0; i < vars.length; i++) {
-                var pair = vars[i].split("=");
-                if (pair[0] == variable) { return pair[1]; }
+        const app = {
+            data() {
+                return {
+                    buttonlist: [
+                        { name: "申请测试金", pic: "image/buger.png" },
+                        { name: "加班", pic: "image/fries.png" },
+                    ]
+                }
             }
-            return (false);
+        }
+        Vue.createApp(app).mount("#container")
+
+        function newtab(target) {
+            window.open("testmoney.html", '_self', 'width=200,height=100')
         }
     </script>
 
-<body>
-    <p>Im here~</p>
-    <div>加班日期:</div>
-    <div id="div1"></div>
-    <button id="btn_c">审批</button>
 </body>
-
-<script>
-    function setNameText() {
-        const myElement = document.getElementById("div1");
-        myElement.innerText = getQueryVariable("requestId");
-    }
-    setNameText();
-</script>
 
 </html>
