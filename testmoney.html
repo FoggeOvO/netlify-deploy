@@ -89,29 +89,33 @@
 
 
         <script type="text/javascript">
-            $(document).ready(function () {
-                var requestid = document.getElementById("requestid").value;
-                function submit(type) {
-                    const mainButton = window.Telegram.WebApp.MainButton;
-                    callback_text = "";
-                    // type = 0:審批 1:退回
-                    if (type == 0) {
-                        mainButton.text = "審批mainbutton";
-                        callback_text = "submit " + requestid;
+            // $(document).ready(function () {
+            var requestid = document.getElementById("requestid").value;
+            const mainButton = window.Telegram.WebApp.MainButton;
 
-                    } else {
-                        mainButton.text = "退回mainbutton";
-                        callback_text = "reject " + requestid;
-                    }
-                    mainButton.enable();
-                    mainButton.show();
-                    document.getElementById("requestid").value = callback_text;
+            function submit(type) {
+
+                callback_text = "";
+                // type = 0:審批 1:退回
+                if (type == 0) {
+                    alert(123);
+                    mainButton.text = "審批mainbutton";
+                    callback_text = "submit " + requestid;
+
+                } else {
+                    mainButton.text = "退回mainbutton";
+                    callback_text = "reject " + requestid;
                 }
+                //     mainButton.enable();
+                //     mainButton.show();
+                document.getElementById("requestid").value = callback_text;
+            }
+            mainButton.enable();
+            mainButton.show();
+            mainButton.onClick(() => {
 
-                mainButton.onClick(() => {
-
-                });
             });
+            // });
 
         </script>
 
